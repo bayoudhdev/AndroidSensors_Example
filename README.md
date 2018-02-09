@@ -8,14 +8,18 @@ AndroidSensors is a simple library, that acts as a wrapper around the Android Se
 
 `Disposable mShakeDisposable = mSensorHelper.getShakeSensors(Sensor.TYPE_ACCELEROMETER, shakeObserverResult);`
 
-`/**
+
+`
+/**
      * Method used to return shake value from ax gravity
      *
      * @param sensorType
      * @param resultObserver
      * @return
      */
+     
     public Disposable getShakeSensors(int sensorType, CoreObserverResult<Boolean> resultObserver) {
+    
         return mCoreSensors.observeSensor(sensorType)
                 .subscribeOn(mSchedulersFacade.computation())
                 .observeOn(mSchedulersFacade.ui())
@@ -36,4 +40,6 @@ AndroidSensors is a simple library, that acts as a wrapper around the Android Se
                         resultObserver.onError(sensorNotFoundException);
                     }
                 });
-    }`
+                
+    }
+    `
