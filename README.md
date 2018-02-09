@@ -17,6 +17,7 @@ AndroidSensors is a simple library, that acts as a wrapper around the Android Se
      * @param resultObserver
      * @return
      */
+     
     public Disposable getShakeSensors(int sensorType, CoreObserverResult<Boolean> resultObserver) {
         return mCoreSensors.observeSensor(sensorType)
                 .subscribeOn(mSchedulersFacade.computation())
@@ -41,4 +42,5 @@ AndroidSensors is a simple library, that acts as a wrapper around the Android Se
                     }
                 });
     }
+    
     `
