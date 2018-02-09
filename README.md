@@ -17,14 +17,12 @@ AndroidSensors is a simple library, that acts as a wrapper around the Android Se
      * @param resultObserver
      * @return
      */
-     
     public Disposable getShakeSensors(int sensorType, CoreObserverResult<Boolean> resultObserver) {
-    
         return mCoreSensors.observeSensor(sensorType)
                 .subscribeOn(mSchedulersFacade.computation())
                 .observeOn(mSchedulersFacade.ui())
                 .filter(CoreSensorFilter.filterSensorChanged())
-                .subscribe(coreSensorEvent -> {
+                .map(coreSensorEvent -> {
                     SensorEvent event = coreSensorEvent.getSensorEvent();
                     float ax = event.values[0];
                     float ay = event.values[1];
@@ -32,14 +30,15 @@ AndroidSensors is a simple library, that acts as a wrapper around the Android Se
                     double magnitudeSquared = ax * ax;
                     float linear = az * az + ay * ay;
                     if (magnitudeSquared >= linear) {
-                        resultObserver.onNext(magnitudeSquared > DEFAULT_ACCELERATION_SHAKE ? true : false);
+                        return magnitudeSquared > DEFAULT_ACCELERATION_SHAKE ? true : false;
                     }
-                }, throwable -> {
+                    return false;
+                })
+                .subscribe(coreSensorEvent -> resultObserver.onNext(coreSensorEvent), throwable -> {
                     if (throwable instanceof SensorNotFoundException) {
                         SensorNotFoundException sensorNotFoundException = (SensorNotFoundException) throwable;
                         resultObserver.onError(sensorNotFoundException);
                     }
                 });
-                
     }
     `
