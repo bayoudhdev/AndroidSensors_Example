@@ -4,7 +4,7 @@ stream of sensor data, into a Flowable that emits the same events, so that you c
 complex operations,  RxJava2 compatible, Dagger 2.
 
 
-Example Sensor data:
+# Example Sensor data:
 
 * If we want to obtain shake value from ax gravity we can use the method getShakeSensors
 
