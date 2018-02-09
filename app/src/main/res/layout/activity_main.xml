@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/id_layout_sensors"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/id_btn_shake"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@color/colorAccent"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/id_btn_light"
+            app:layout_constraintEnd_toStartOf="@+id/id_btn_light"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/id_btn_light" />
+
+        <Button
+            android:id="@+id/id_btn_light"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@color/colorYellow"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/id_btn_proximity"
+            app:layout_constraintEnd_toStartOf="@+id/id_btn_proximity"
+            app:layout_constraintStart_toEndOf="@+id/id_btn_shake"
+            app:layout_constraintTop_toTopOf="@+id/id_btn_proximity" />
+
+        <Button
+            android:id="@+id/id_btn_proximity"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@color/colorAccent"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/id_btn_position"
+            app:layout_constraintEnd_toStartOf="@+id/id_btn_position"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/id_btn_light"
+            app:layout_constraintTop_toTopOf="@+id/id_btn_position"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/id_btn_position"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@color/colorGray"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/id_btn_choc"
+            app:layout_constraintEnd_toStartOf="@+id/id_btn_choc"
+            app:layout_constraintStart_toEndOf="@+id/id_btn_proximity"
+            app:layout_constraintTop_toTopOf="@+id/id_btn_choc" />
+
+        <Button
+            android:id="@+id/id_btn_choc"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="80dp"
+            android:background="@color/colorAccent"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/id_btn_position"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_lat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:text="Lat :"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_lng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp"
+            android:layout_toRightOf="@id/txt_lat"
+            android:text="Long :"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txt_lat" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
